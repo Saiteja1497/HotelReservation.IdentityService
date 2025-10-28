@@ -35,5 +35,19 @@ namespace IdentityService.Infrastructure.Repositories
             ApplicationUser? user  = await _dapperDbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query,parameneters);
             return user;
         }
+
+
+
+        //This method is used by Bookings Microservice to get User details by UserID
+        public Task<ApplicationUser?> GetUserByUserId(Guid? userId)
+        {
+            if(userId == Guid.Empty)
+            {
+                throw new ArgumentException("UserID cannot be empty", nameof(userId));
+            }
+            string? query = "SELECT * FROM public.\"Users\" WHERE \"UserID\"=@UserID";
+            var parameneters = new { UserID = userId };
+            return _dapperDbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query, parameneters);
+        }
     }
 }

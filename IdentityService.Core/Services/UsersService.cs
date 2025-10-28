@@ -17,6 +17,8 @@ namespace IdentityService.Core.Services
             _userRepository = userRepository;
             _mapper = mapper;
         }
+
+       
         public async Task<AuthResponse?> Login(LoginRequest loginRequest)
         {
             ApplicationUser? user = await _userRepository.GetUserByEmail(loginRequest.Email,  loginRequest.Password);
@@ -41,5 +43,22 @@ namespace IdentityService.Core.Services
             return _mapper.Map<AuthResponse>(registeredUser) with { Success = true, Token = "token" };
             //return new AuthResponse(registeredUser.UserID, registeredUser.UserName, registeredUser.Email, registeredUser.Gender, "Token", Success: true);
         }
+
+
+
+
+        public async Task<UserDTO> GetUserByUserID(Guid UserID)
+        {
+            if(UserID==Guid.Empty)
+            {
+                throw new ArgumentException("User ID is Invalid");
+            }
+            ApplicationUser? user = await _userRepository.GetUserByUserId(UserID);
+            
+            return _mapper.Map<UserDTO>(user);
+        }
+
+
+
     }
 }

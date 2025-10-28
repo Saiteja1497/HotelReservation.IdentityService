@@ -8,5 +8,7 @@ namespace IdentityService.Core.UserContracts
         Task<AuthResponse?> Login(LoginRequest loginRequest);
         Task<AuthResponse?> Register(RegisterRequest registerRequest);
 
+        Task<UserDTO> GetUserByUserID(Guid UserID);
+
     }
 }
