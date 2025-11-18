@@ -16,7 +16,7 @@ namespace IdentityService.Infrastructure.Repositories
         public async Task<ApplicationUser?> AddUser(ApplicationUser user)
         {
             user.UserID= Guid.NewGuid();
-            string query = "INSERT INTO public.\"Users\"(\"UserID\",\"Email\",\"UserName\",\"Gender\",\"Password\")" +
+            string query = "INSERT INTO \"Users\"(\"UserID\",\"Email\",\"UserName\",\"Gender\",\"Password\")" +
                 "VALUES(@UserID,@Email,@UserName,@Gender,@Password)";
            int rowsAffected =  await _dapperDbContext.DbConnection.ExecuteAsync(query,user);
             if (rowsAffected > 0)
@@ -30,7 +30,7 @@ namespace IdentityService.Infrastructure.Repositories
         public async Task<ApplicationUser?> GetUserByEmail(string? email, string? password)
         {
 
-            string? query = "SELECT * FROM public.\"Users\" WHERE \"Email\"=@Email AND \"Password\"=@Password";
+            string? query = "SELECT * FROM \"Users\" WHERE \"Email\"=@Email AND \"Password\"=@Password";
             var parameneters = new { Email = email, Password = password };
             ApplicationUser? user  = await _dapperDbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query,parameneters);
             return user;
@@ -45,7 +45,7 @@ namespace IdentityService.Infrastructure.Repositories
             {
                 throw new ArgumentException("UserID cannot be empty", nameof(userId));
             }
-            string? query = "SELECT * FROM public.\"Users\" WHERE \"UserID\"=@UserID";
+            string? query = "SELECT * FROM \"Users\" WHERE \"UserID\"=@UserID";
             var parameneters = new { UserID = userId };
             return _dapperDbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query, parameneters);
         }

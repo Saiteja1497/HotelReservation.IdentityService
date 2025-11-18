@@ -26,8 +26,7 @@ namespace IdentityService.Core.Services
             {
                 return null;
             }
-            return _mapper.Map<AuthResponse>(user) with {Success=true, Token="token" };
-            //return new AuthResponse( user.UserID, user.UserName, user.Email, user.Gender, "Token", Success: true);
+            return _mapper.Map<AuthResponse>(user) with {Success=true, Token="valid" };
         }
 
         public async Task<AuthResponse?> Register([FromBody] RegisterRequest registerRequest)

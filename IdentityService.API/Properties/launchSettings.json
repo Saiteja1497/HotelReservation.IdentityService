@@ -7,7 +7,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "POSTGRES_HOST": "localhost",
         "POSTGRES_PASSWORD": "admin",
-        "POSTGRES_DATABASE": "HotelReservationUsers",
+        "POSTGRES_DATABASE": "hotelreservationusers",
         "POSTGRES_USER": "postgres",
         "POSTGRES_PORT":"5432"
       },
@@ -21,7 +21,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "POSTGRES_HOST": "localhost",
         "POSTGRES_PASSWORD": "admin",
-        "POSTGRES_DATABASE": "HotelReservationUsers",
+        "POSTGRES_DATABASE": "hotelreservationusers",
         "POSTGRES_USER": "postgres",
         "POSTGRES_PORT": "5432"
       },
@@ -45,7 +45,7 @@
         "ASPNETCORE_HTTP_PORTS": "8080",
         "POSTGRES_HOST": "localhost",
         "POSTGRES_PASSWORD": "admin",
-        "POSTGRES_DATABASE": "HotelReservationUsers",
+        "POSTGRES_DATABASE": "hotelreservationusers",
         "POSTGRES_USER": "postgres",
         "POSTGRES_PORT": "5432"
       },
